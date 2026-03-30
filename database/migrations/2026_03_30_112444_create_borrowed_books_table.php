@@ -13,7 +13,14 @@ return new class extends Migration
     {
         Schema::create('borrowed_books', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('genre')->nullable();
+            $table->text('description')->nullable();
+            $table->string('borrower_name');
+            $table->timestamp('borrowed_at')->useCurrent();
+            $table->timestamp('due_at')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
