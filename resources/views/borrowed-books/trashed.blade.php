@@ -8,7 +8,8 @@
                     <h1 class="text-2xl font-semibold">Trashed Books</h1>
                     <p class="text-sm text-gray-500">Restore or permanently delete soft-deleted entries.</p>
                 </div>
-                <a href="{{ route('borrowed-books.index') }}" class="rounded-md border border-gray-300 px-4 py-2 text-sm hover:bg-gray-50">Back to Books</a>
+                <a href="{{ route('borrowed-books.index') }}"
+                    class="rounded-md border border-gray-300 px-4 py-2 text-sm hover:bg-gray-50">Back to Books</a>
             </div>
         </div>
 
@@ -29,21 +30,27 @@
                             <td class="px-4 py-3">{{ $book->borrower_name }}</td>
                             <td class="px-4 py-3">{{ optional($book->deleted_at)->format('M d, Y h:i A') }}</td>
                             <td class="px-4 py-3 space-x-1">
-                                <form action="{{ route('borrowed-books.restore', $book->id) }}" method="POST" class="inline-block">
+                                <form action="{{ route('borrowed-books.restore', $book->id) }}" method="POST"
+                                    class="inline-block">
                                     @csrf
                                     @method('PATCH')
-                                    <button type="submit" class="rounded-md bg-green-600 px-3 py-1 text-xs font-medium text-white hover:bg-green-700">Restore</button>
+                                    <button type="submit"
+                                        class="rounded-md bg-green-600 px-3 py-1 text-xs font-medium text-white hover:bg-green-700">Restore</button>
                                 </form>
-                                <form action="{{ route('borrowed-books.forceDelete', $book->id) }}" method="POST" class="inline-block">
+                                <form action="{{ route('borrowed-books.forceDelete', $book->id) }}" method="POST"
+                                    class="inline-block">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="rounded-md bg-red-600 px-3 py-1 text-xs font-medium text-white hover:bg-red-700" onclick="return confirm('Permanently delete this record?')">Delete</button>
+                                    <button type="submit"
+                                        class="rounded-md bg-red-600 px-3 py-1 text-xs font-medium text-white hover:bg-red-700"
+                                        onclick="return confirm('Permanently delete this record?')">Delete</button>
                                 </form>
                             </td>
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="4" class="px-4 py-10 text-center text-sm text-gray-500">No trashed books found.</td>
+                            <td colspan="4" class="px-4 py-10 text-center text-sm text-gray-500">No trashed books found.
+                            </td>
                         </tr>
                     @endforelse
                 </tbody>
