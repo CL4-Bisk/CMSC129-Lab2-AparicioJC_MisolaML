@@ -36,23 +36,23 @@
         <x-message-modal />
 
         <!-- Hidden inputs for flash messages -->
-        @if(session('success'))
+        @if (session('success'))
             <input type="hidden" id="flashSuccess" value="{{ session('success') }}">
         @endif
 
-        @if(session('error'))
+        @if (session('error'))
             <input type="hidden" id="flashError" value="{{ session('error') }}">
         @endif
 
-        @if(session('warning'))
+        @if (session('warning'))
             <input type="hidden" id="flashWarning" value="{{ session('warning') }}">
         @endif
 
-        @if(session('info'))
+        @if (session('info'))
             <input type="hidden" id="flashInfo" value="{{ session('info') }}">
         @endif
 
-        @if($errors->any())
+        @if ($errors->any())
             <input type="hidden" id="flashValidationErrors" value="{{ json_encode($errors->all()) }}">
         @endif
     </div>
@@ -99,13 +99,30 @@
                 const modalPanel = this.modal.querySelector('.inline-block');
                 if (modalPanel) {
                     // Remove existing color classes
-                    modalPanel.className = modalPanel.className.replace(/bg-\w+-\d+/g, '').replace(/border-\w+-\d+/g, '').replace(/text-\w+-\d+/g, '');
+                    modalPanel.className = modalPanel.className.replace(/bg-\w+-\d+/g, '').replace(/border-\w+-\d+/g,
+                        '').replace(/text-\w+-\d+/g, '');
 
                     const colors = {
-                        success: { bg: 'bg-green-50', border: 'border-green-200', text: 'text-green-900' },
-                        error: { bg: 'bg-red-50', border: 'border-red-200', text: 'text-red-900' },
-                        warning: { bg: 'bg-yellow-50', border: 'border-yellow-200', text: 'text-yellow-900' },
-                        info: { bg: 'bg-blue-50', border: 'border-blue-200', text: 'text-blue-900' }
+                        success: {
+                            bg: 'bg-green-50',
+                            border: 'border-green-200',
+                            text: 'text-green-900'
+                        },
+                        error: {
+                            bg: 'bg-red-50',
+                            border: 'border-red-200',
+                            text: 'text-red-900'
+                        },
+                        warning: {
+                            bg: 'bg-yellow-50',
+                            border: 'border-yellow-200',
+                            text: 'text-yellow-900'
+                        },
+                        info: {
+                            bg: 'bg-blue-50',
+                            border: 'border-blue-200',
+                            text: 'text-blue-900'
+                        }
                     };
 
                     const colorScheme = colors[type] || colors.info;
@@ -147,7 +164,9 @@
             } else if (flashValidationErrors) {
                 const errors = JSON.parse(flashValidationErrors.value);
                 const errorList = errors.map(error => `<li>${error}</li>`).join('');
-                messageModal.show('error', 'Validation Errors', `<p class="font-semibold mb-2">Please fix the following errors:</p><ul class="list-disc pl-5 space-y-1">${errorList}</ul>`);
+                messageModal.show('error', 'Validation Errors',
+                    `<p class="font-semibold mb-2">Please fix the following errors:</p><ul class="list-disc pl-5 space-y-1">${errorList}</ul>`
+                    );
             }
         });
 
