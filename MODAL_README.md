@@ -38,26 +38,26 @@ You can also show messages programmatically using JavaScript:
 
 ```javascript
 // Show a success message
-window.showMessage('success', 'Success!', 'Your changes have been saved.');
+window.showMessage("success", "Success!", "Your changes have been saved.");
 
 // Show an error message
-window.showMessage('error', 'Error!', 'Failed to save changes.');
+window.showMessage("error", "Error!", "Failed to save changes.");
 
 // Show a warning
-window.showMessage('warning', 'Warning!', 'This action cannot be undone.');
+window.showMessage("warning", "Warning!", "This action cannot be undone.");
 
 // Show info
-window.showMessage('info', 'Information', 'Please review the documentation.');
+window.showMessage("info", "Information", "Please review the documentation.");
 ```
 
 ## Message Types
 
-| Type | Color Scheme | Use Case |
-|------|-------------|----------|
-| `success` | Green | Successful operations, confirmations |
-| `error` | Red | Errors, validation failures, failures |
-| `warning` | Yellow | Warnings, destructive actions, cautions |
-| `info` | Blue | Information, tips, general messages |
+| Type      | Color Scheme | Use Case                                |
+| --------- | ------------ | --------------------------------------- |
+| `success` | Green        | Successful operations, confirmations    |
+| `error`   | Red          | Errors, validation failures, failures   |
+| `warning` | Yellow       | Warnings, destructive actions, cautions |
+| `info`    | Blue         | Information, tips, general messages     |
 
 ## Technical Implementation
 
@@ -104,6 +104,7 @@ The BorrowedBooksController has been updated to use different message types:
 ## Testing
 
 A test route has been added for demonstration:
+
 - Visit: `http://127.0.0.1:8000/test-modal`
 - This will redirect to the books index with a warning message
 
