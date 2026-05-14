@@ -101,7 +101,7 @@ class BorrowedBooksController extends Controller
         $borrowed_book->delete(); // Soft delete
 
         return redirect()->route('borrowed-books.index')
-                        ->with('success', 'Book moved to trash!');
+                        ->with('warning', 'Book moved to trash!');
     }
 
     /**
@@ -134,6 +134,6 @@ class BorrowedBooksController extends Controller
         $borrowedBooks->forceDelete(); // Permanent delete
 
         return redirect()->route('borrowed-books.trashed')
-                        ->with('success', 'The book is untracked, gin balik na!');
+                        ->with('info', 'The book is untracked, gin balik na!');
     }
 }
