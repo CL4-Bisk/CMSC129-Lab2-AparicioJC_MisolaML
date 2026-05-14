@@ -29,7 +29,7 @@ class BorrowedBooksController extends Controller
         }
 
         $books = $query->latest()->paginate(10)->withQueryString();
-        return view('borrowed-books.index', compact('books'));
+        return view('index', compact('books'));
     }
 
     /**
@@ -61,23 +61,23 @@ class BorrowedBooksController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(BorrowedBooks $borrowedBooks)
+    public function show(BorrowedBooks $borrowed_book)
     {
-        return view('borrowed-books.show', compact('borrowedBooks'));
+        return view('borrowed-books.show', compact('borrowed_book'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(BorrowedBooks $borrowedBooks)
+    public function edit(BorrowedBooks $borrowed_book)
     {
-        return view('borrowed-books.edit', compact('borrowedBooks'));
+        return view('borrowed-books.edit', compact('borrowed_book'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, BorrowedBooks $borrowedBooks)
+    public function update(Request $request, BorrowedBooks $borrowed_book)
     {
         $validated = $request->validate([
             'title' => 'required|string|max:255',
@@ -87,7 +87,7 @@ class BorrowedBooksController extends Controller
             'due_at'        => 'nullable|date|after:today',
         ]);
 
-        $borrowedBooks->update($validated);
+        $borrowed_book->update($validated);
 
         return redirect()->route('borrowed-books.index')
                      ->with('success', 'Successfylly Updated!');
@@ -96,9 +96,9 @@ class BorrowedBooksController extends Controller
     /**
      * Soft delete the specified menu item.
      */
-    public function destroy(BorrowedBooks $borrowedBooks)
+    public function destroy(BorrowedBooks $borrowed_book)
     {
-        $borrowedBooks->delete(); // Soft delete
+        $borrowed_book->delete(); // Soft delete
 
         return redirect()->route('borrowed-books.index')
                         ->with('success', 'Book moved to trash!');
